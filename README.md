@@ -1,7 +1,7 @@
-# Self-supervised Learning Reveals the Geographical Drivers of City Formation
+# Urban Niche
 
 This repository contains the implementation and data for the paper:
->**Self-supervised learning reveals the geographical drivers of city formation**
+>**Self-supervised learning quantifies the geographical foundations of city formation**
 >
 >Weiyu Zhang, Lei Dong∗, Junjie Yang, and Yu Liu∗
 >  

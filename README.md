@@ -61,7 +61,7 @@ This repository contains the implementation and data for the paper:
 
 5. **Historical Cities**:
    - European cities (700-2000 CE): https://ssh.datastations.nl/dataset.xhtml?persistentId=doi:10.17026/dans-xzy-u62q
-   - Chinese cities CHGIS (370 BCE-1911 CE): https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/WW1PD6
+   - Chinese cities CHGIS (379 BCE-1911 CE): https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/WW1PD6
    - Chinese walled cities (1368-1911 CE): https://doi.org/10.6084/m9.figshare.14112968.v3
 
 ### Processed Data

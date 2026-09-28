@@ -45,16 +45,16 @@ This repository contains the implementation and data for the paper:
 
 1. **Topography**: Forest and Buildings removed Copernicus Digital Elevation Model (FABDEM) v1-2
    - Resolution: 1 arc-second (~30m at equator)
-   - Source: https://data.bris.ac.uk/data/dataset/s5hqmjcdj8yo2ibzi9b4ew3sn
+   - Source: https://research-information.bris.ac.uk/en/datasets/fabdem-v1-2/
 
 2. **Hydrology**: Global Surface Water (GSW) dataset
    - Resolution: 1 arc-second (~30m at equator)
    - Source: https://global-surface-water.appspot.com/
 
 3. **Climate**: CHELSA (Climatologies at High Resolution for Earth's Land Surface Areas)
-   - Historical: https://chelsa-climate.org/chelsa-trace21k/
-   - Contemporary: https://chelsa-climate.org/
-   - Future projections: https://chelsa-climate.org/cmip6/
+   - Historical: https://www.chelsa-climate.org/datasets/chelsa-trace21k-centennial-bioclim
+   - Contemporary: https://www.chelsa-climate.org/datasets/chelsa_bioclim
+   - Future projections: https://www.chelsa-climate.org/datasets/chelsa_bioclim
 
 4. **Agricultural Potential**: Global Agro-Ecological Zones (GAEZ) v4
    - Source: https://gaez.fao.org/

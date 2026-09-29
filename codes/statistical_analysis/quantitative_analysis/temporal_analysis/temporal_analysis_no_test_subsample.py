@@ -91,13 +91,11 @@ class TimeWindowFilter:
 
     def merge_2nd_nature_data(self, df: pd.DataFrame, start_year: int) -> pd.DataFrame:
         """Merge original data with 2nd Nature Geography data."""
-        nature_columns = self.get_2nd_nature_columns(start_year)
-        columns_to_merge = [
-            'id'] + [col for col in nature_columns if col in self.second_nature_data.columns]
-        nature_data_subset = self.second_nature_data[columns_to_merge]
-        rename_dict = {
-            col: f'city_count_{col.split("_")[-1]}' for col in nature_columns if col in self.second_nature_data.columns}
-        nature_data_subset = nature_data_subset.rename(columns=rename_dict)
+        nature_columns = [col for col in self.second_nature_data.columns if col.startswith('existing_cities_distance_')]
+        nature_data_subset = self.second_nature_data.loc[
+            (self.second_nature_data['start_year'] == start_year) &
+            (self.second_nature_data['end_year'] == start_year + self.window_size),
+            ['id'] + nature_columns]
         return df.merge(nature_data_subset, on='id', how='left')
 
     def get_time_windows_generator(self, df: pd.DataFrame):
@@ -143,7 +141,7 @@ class ModelTrainer:
         if not with_2nd_nature:
             # Remove 2nd nature geography columns
             nature_cols = [
-                col for col in x_train.columns if 'city_count_' in col]
+                col for col in x_train.columns if col.startswith('existing_cities_distance_')]
             print("Removing 2nd nature columns: ", nature_cols)
             print("Features before removal: ", len(x_train.columns))
             x_train = x_train.drop(columns=nature_cols)
@@ -294,7 +292,7 @@ class RayTimeWindowAnalysis:
         processed_data['x_test'] = x_test
         processed_data['y_test'] = y_test
         used_nature_cols = [
-            col for col in processed_data['x_test'].columns if 'city_count_' in col]
+            col for col in processed_data['x_test'].columns if col.startswith('existing_cities_distance_')]
         print("Used 2nd nature columns: ", used_nature_cols)
 
         # Prepare balanced training data
@@ -468,7 +466,7 @@ class RayTimeWindowAnalysis:
                     combined_df, start_year, end_year, city_ids
                 )
                 used_nature_cols = [
-                    col for col in filtered_df.columns if 'city_count_' in col]
+                    col for col in filtered_df.columns if col.startswith('existing_cities_distance_')]
                 processed_df = self.process_window_data(
                     filtered_df, start_year, end_year)
 
@@ -498,7 +496,7 @@ def main():
         base_path="/path/to/ssl/results",
         model_name=f"replace_with_your_model_name",
         data_file_name="CN_pref_attribute_dem_clim_augmented.parquet",
-        second_nature_path="/path/to/second_nature_geography/data.parquet",
+        second_nature_path="/path/to/existing_cities_samples.parquet",
         save_dir="/path/to/results/time_window_analysis/pref/",
         window_size=300,
         n_repeats=80,
